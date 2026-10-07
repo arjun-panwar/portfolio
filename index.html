@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arjun Panwar | Projects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#000;
+  --paper:#fffdf5;
+  --ground:#f4f0ff;
+  --yellow:#FFD60A; --pink:#FF3D7F; --orange:#FF9F1C; --mint:#00E0A4; --blue:#4FC3FF; --purple:#9B6BFF;
+  --muted:#3a3a3a;
+  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
+  --body:"DM Sans", "Helvetica Neue", Helvetica, system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --ground:#17132b; --paper:#fffdf5; }
+}
+:root[data-theme="dark"]{ --ground:#17132b; --paper:#fffdf5; }
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.box{background:var(--paper);border:3px solid var(--ink);border-radius:18px;box-shadow:8px 8px 0 var(--ink)}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1}
+
+/* ---------- HERO ---------- */
+.hero{padding:56px 0 40px}
+.hero-card{background:var(--yellow);padding:clamp(28px,5vw,64px);position:relative;overflow:hidden}
+.namebox{position:relative;display:inline-block;padding:10px 18px;margin:36px 0 8px}
+.namebox h1{font-size:clamp(52px,10vw,132px);font-weight:800;letter-spacing:-0.035em}
+.det{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.det rect{fill:none;stroke:var(--ink);stroke-width:4;stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 1.4s .3s cubic-bezier(.6,0,.2,1) forwards}
+.tag{position:absolute;left:-3px;top:-34px;background:var(--ink);color:var(--yellow);font-weight:700;font-size:14px;padding:5px 10px;border-radius:6px 6px 6px 0;opacity:0;transform:translateY(8px);animation:pop .4s 1.5s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1;transform:none}}
+.hero .lead{font-size:clamp(19px,2.2vw,24px);max-width:36ch;margin:14px 0 26px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:12px}
+.chip{border:3px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:700;background:var(--paper);box-shadow:4px 4px 0 var(--ink)}
+.chip.p{background:var(--pink)} .chip.m{background:var(--mint)} .chip.b{background:var(--blue)}
+.scan{position:absolute;right:-60px;top:-60px;width:320px;height:320px;border:3px dashed var(--ink);border-radius:50%;opacity:.25;animation:spin 30s linear infinite}
+.scan.two{right:40px;top:40px;width:120px;height:120px;animation-duration:12s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+nav.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+nav.jump a{text-decoration:none;font-weight:700;font-size:15px;border:3px solid var(--ink);border-radius:999px;padding:7px 14px;background:var(--paper);min-height:44px;display:inline-flex;align-items:center}
+nav.jump a:hover{background:var(--ink);color:var(--yellow)}
+
+/* ---------- PATH ---------- */
+.path{padding:30px 0}
+.path h2,.sec-title{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-0.02em;margin-bottom:22px;color:var(--ink)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .path h2,:root:not([data-theme="light"]) .sec-title{color:#fff}}
+:root[data-theme="dark"] .path h2,:root[data-theme="dark"] .sec-title{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.step{padding:20px;position:relative;opacity:0;transform:translateY(20px)}
+.on .step{animation:rise .5s forwards}
+.on .step:nth-child(2){animation-delay:.25s}.on .step:nth-child(3){animation-delay:.5s}.on .step:nth-child(4){animation-delay:.75s}
+@keyframes rise{to{opacity:1;transform:none}}
+.step .yr{font-family:var(--display);font-weight:800;font-size:34px}
+.step .role{font-weight:700;margin-top:6px;line-height:1.25}
+.step:nth-child(1){background:var(--blue)}.step:nth-child(2){background:var(--mint)}.step:nth-child(3){background:var(--orange)}.step:nth-child(4){background:var(--pink)}
+.step .star{position:absolute;right:14px;top:14px;width:30px;height:30px}
+
+/* ---------- PROJECTS ---------- */
+.proj{padding:34px 0}
+.pcard{display:grid;grid-template-columns:1fr 1.15fr;gap:0;overflow:hidden}
+.pcard.flip{grid-template-columns:1.15fr 1fr}
+.pcard.flip .ptext{order:2;border-left:3px solid var(--ink);border-right:0}
+.ptext{padding:clamp(24px,4vw,44px);border-right:3px solid var(--ink)}
+.pill{display:inline-block;border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:700;font-size:14px;background:var(--paper)}
+.ptext h3{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-0.02em;margin:16px 0 6px}
+.dates{font-weight:700;opacity:.75;margin-bottom:14px}
+.ptext ul{margin:0 0 20px;padding-left:20px}
+.ptext li{margin-bottom:6px}
+.wins{display:flex;flex-wrap:wrap;gap:10px}
+.win{border:3px solid var(--ink);border-radius:12px;background:var(--paper);padding:8px 12px;box-shadow:4px 4px 0 var(--ink)}
+.win b{font-family:var(--display);font-size:24px;display:block;line-height:1.05}
+.win > span{font-size:13px;font-weight:600;display:block}
+.pvis{padding:20px;display:flex;align-items:center;justify-content:center;background:var(--paper);min-height:340px}
+.pvis svg{width:100%;height:auto;max-width:560px}
+.c-yellow .ptext{background:var(--yellow)} .c-pink .ptext{background:var(--pink)} .c-orange .ptext{background:var(--orange)}
+.c-mint .ptext{background:var(--mint)} .c-blue .ptext{background:var(--blue)}
+
+/* scene shared */
+.s-ink{stroke:#000;stroke-width:3;fill:none}
+.lbl{font:700 13px var(--body);fill:#000}
+.lbl-w{font:700 12px var(--body);fill:#fff}
+
+/* yard */
+.mule{animation:drive 7s linear infinite}
+@keyframes drive{0%{transform:translateX(0)}100%{transform:translateX(430px)}}
+.tr{fill:#d9d9d9;animation:hit 7s linear infinite}
+@keyframes hit{0%,6%{fill:#d9d9d9}9%,94%{fill:#00E0A4}100%{fill:#d9d9d9}}
+.ghost{animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.15}}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite;fill:none;stroke:#000;stroke-width:2.5}
+.ring.d2{animation-delay:.8s}.ring.d3{animation-delay:1.6s}
+@keyframes ring{0%{transform:scale(.3);opacity:1}100%{transform:scale(2.4);opacity:0}}
+
+/* gate */
+.truck{animation:truck 8s cubic-bezier(.45,0,.3,1) infinite}
+@keyframes truck{0%{transform:translateX(-260px)}28%,62%{transform:translateX(0)}100%{transform:translateX(420px)}}
+.arm{transform-box:fill-box;transform-origin:100% 50%;animation:arm 8s infinite}
+@keyframes arm{0%,52%{transform:rotate(0)}58%,90%{transform:rotate(80deg)}100%{transform:rotate(0)}}
+.flash{animation:flash 8s infinite;opacity:0}
+@keyframes flash{0%,29%{opacity:0}30%{opacity:.9}34%,100%{opacity:0}}
+.ocr{animation:ocr 8s infinite;opacity:0}
+@keyframes ocr{0%,31%{opacity:0}33%,60%{opacity:1}64%,100%{opacity:0}}
+.sweep{animation:sweep 8s infinite;opacity:0}
+@keyframes sweep{0%,36%{opacity:0;transform:translateX(0)}38%{opacity:1;transform:translateX(0)}50%{opacity:1;transform:translateX(150px)}52%,100%{opacity:0;transform:translateX(150px)}}
+.ok{opacity:0;animation:okk 8s infinite}
+.ok.k1{--a:35%}.ok.k2{--a:44%}.ok.k3{--a:52%}
+@keyframes okk{0%{opacity:0;transform:translateX(12px)}30%{opacity:0;transform:translateX(12px)}}
+.ok.k1{animation-name:ok1}.ok.k2{animation-name:ok2}.ok.k3{animation-name:ok3}
+@keyframes ok1{0%,34%{opacity:0;transform:translateX(12px)}37%,88%{opacity:1;transform:none}94%,100%{opacity:0}}
+@keyframes ok2{0%,43%{opacity:0;transform:translateX(12px)}46%,88%{opacity:1;transform:none}94%,100%{opacity:0}}
+@keyframes ok3{0%,51%{opacity:0;transform:translateX(12px)}54%,88%{opacity:1;transform:none}94%,100%{opacity:0}}
+
+/* packing */
+.item{animation:belt 5s linear infinite}
+@keyframes belt{0%{transform:translateX(0)}100%{transform:translateX(300px)}}
+.item.i2{animation-delay:-1.25s}.item.i3{animation-delay:-2.5s}.item.i4{animation-delay:-3.75s}
+.bad{animation:shake 5s infinite}
+@keyframes shake{0%,60%,72%,100%{transform:translateX(0)}62%,66%,70%{transform:translateX(-4px)}64%,68%{transform:translateX(4px)}}
+.bar{transform-box:fill-box;transform-origin:0 50%;transform:scaleX(0)}
+.on .bar{animation:fill 1.6s .3s cubic-bezier(.3,0,.2,1) forwards}
+@keyframes fill{to{transform:scaleX(1)}}
+
+/* docs */
+.scanline{animation:scanl 5s linear infinite}
+@keyframes scanl{0%{transform:translateY(0)}80%,100%{transform:translateY(200px)}}
+.hl{opacity:0;animation:hl 5s infinite}
+.hl.h1{animation-name:h1}.hl.h2{animation-name:h2}.hl.h3{animation-name:h3}
+@keyframes h1{0%,12%{opacity:0}16%,92%{opacity:1}100%{opacity:0}}
+@keyframes h2{0%,38%{opacity:0}42%,92%{opacity:1}100%{opacity:0}}
+@keyframes h3{0%,62%{opacity:0}66%,92%{opacity:1}100%{opacity:0}}
+.row{opacity:0}
+.row.r1{animation:r1 5s infinite}.row.r2{animation:r2 5s infinite}.row.r3{animation:r3 5s infinite}
+@keyframes r1{0%,18%{opacity:0;transform:translateX(-14px)}22%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes r2{0%,44%{opacity:0;transform:translateX(-14px)}48%,92%{opacity:1;transform:none}100%{opacity:0}}
+@keyframes r3{0%,68%{opacity:0;transform:translateX(-14px)}72%,92%{opacity:1;transform:none}100%{opacity:0}}
+
+
+/* skills */
+.skills{padding:34px 0}
+.ribbon{overflow:hidden;border:3px solid var(--ink);border-radius:999px;background:var(--ink);box-shadow:6px 6px 0 var(--purple);margin-bottom:26px}
+.ribbon-track{display:flex;gap:28px;width:max-content;padding:12px 0;animation:marq 32s linear infinite}
+.ribbon:hover .ribbon-track{animation-play-state:paused}
+.ribbon-track span{font-family:var(--display);font-weight:800;font-size:22px;color:var(--yellow);white-space:nowrap}
+.ribbon-track span:nth-child(3n+2){color:var(--mint)}.ribbon-track span:nth-child(3n){color:var(--pink)}
+@keyframes marq{to{transform:translateX(-50%)}}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.sk{padding:22px;opacity:0;transform:translateY(16px)}
+.on .sk{animation:rise .45s forwards}
+.on .sk:nth-child(2){animation-delay:.08s}.on .sk:nth-child(3){animation-delay:.16s}.on .sk:nth-child(4){animation-delay:.24s}
+.on .sk:nth-child(5){animation-delay:.32s}.on .sk:nth-child(6){animation-delay:.4s}
+.sk h3{font-size:24px;font-weight:800;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tags span{border:2.5px solid var(--ink);border-radius:999px;padding:4px 11px;font-size:14px;font-weight:600;background:var(--paper)}
+.sk.wide{grid-column:span 2}
+.sk:nth-child(1){background:var(--yellow)}.sk:nth-child(2){background:var(--blue)}.sk:nth-child(3){background:var(--mint)}
+.sk:nth-child(4){background:var(--orange)}.sk:nth-child(5){background:var(--pink)}.sk:nth-child(6){background:var(--purple)}
+@media (max-width:860px){.sgrid{grid-template-columns:1fr}.sk.wide{grid-column:auto}}
+
+/* awards + footer */
+.awards{padding:34px 0 20px}
+.agrid{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.award{padding:28px;display:flex;gap:20px;align-items:center}
+.award h3{font-size:30px;font-weight:800}
+.award p{margin:6px 0 0;font-weight:500}
+.medal{flex:none;width:76px;height:76px}
+.medal circle{transform-box:fill-box;transform-origin:center}
+.on .medal .spinr{animation:spin 8s linear infinite}
+footer{padding:30px 0 60px}
+.foot{background:var(--ink);color:#fff;padding:clamp(26px,4vw,44px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-color:#000;box-shadow:8px 8px 0 var(--purple)}
+.foot h2{font-size:clamp(28px,4vw,44px);font-weight:800}
+.foot a{background:var(--yellow);color:#000;border:3px solid #fff;border-radius:999px;padding:10px 18px;font-weight:700;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.foot a:hover{background:var(--mint)}
+.links{display:flex;flex-wrap:wrap;gap:12px}
+
+@media (max-width:860px){
+  .pcard,.pcard.flip{grid-template-columns:1fr}
+  .ptext,.pcard.flip .ptext{order:0;border-right:0;border-left:0;border-bottom:3px solid var(--ink)}
+  .steps{grid-template-columns:1fr 1fr}
+  .agrid{grid-template-columns:1fr}
+  .pvis{min-height:0}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .det rect{stroke-dashoffset:0}.tag,.step{opacity:1;transform:none}
+  .bar{transform:none}.ok,.ocr,.hl,.row,.sk{opacity:1}.sk{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="box hero-card">
+      <div class="scan" aria-hidden="true"></div><div class="scan two" aria-hidden="true"></div>
+      <div class="namebox">
+        <span class="tag" aria-hidden="true">staff_cv_engineer 0.99</span>
+        <h1>Arjun Panwar</h1>
+        <svg class="det" aria-hidden="true" preserveAspectRatio="none"><rect x="0" y="0" width="100%" height="100%" rx="6"/></svg>
+      </div>
+      <p class="lead">I build computer vision systems that work in real yards, warehouses and gates, and I lead the team that ships them.</p>
+      <div class="chips">
+        <span class="chip">5 years at KoiReader</span>
+        <span class="chip p">Team of 15</span>
+        <span class="chip m">Top Gun Award 2026</span>
+        <span class="chip b">Impact Award, 3 times</span>
+      </div>
+      <nav class="jump" aria-label="Projects">
+        <a href="#yard">Yard tracking</a><a href="#inventory">Inventory tracking</a><a href="#gate">Gate automation</a><a href="#s2u">S2U-Connect</a><a href="#docs">Statement digitization</a><a href="#skills">Skills</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="path reveal">
+  <div class="wrap">
+    <h2>How I got here</h2>
+    <div class="steps">
+      <div class="box step"><div class="yr">2021</div><div class="role">Python Developer intern</div></div>
+      <div class="box step"><div class="yr">2022</div><div class="role">Associate CV Engineer</div></div>
+      <div class="box step"><div class="yr">2024</div><div class="role">Computer Vision Engineer</div></div>
+      <div class="box step"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.6 1.7 7.3L12 17.8 5.6 21.5l1.7-7.3L2 9.6 9 9z" fill="#FFD60A" stroke="#000" stroke-width="2" stroke-linejoin="round"/></svg><div class="yr">2026</div><div class="role">Staff CV Engineer, leading a team of 15</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- YARD -->
+<section class="proj reveal" id="yard">
+  <div class="wrap">
+    <article class="box pcard c-yellow">
+      <div class="ptext">
+        <span class="pill">Nov 2025 to now</span>
+        <h3>Yard Asset Management</h3>
+        <div class="dates">12 autonomous yard mules on a 2 km site</div>
+        <ul>
+          <li>Each mule carries two cameras, an edge computer and GNSS, and logs where every trailer is parked, day and night.</li>
+          <li>Set up our own RTK base station so trailer positions land in the right parking slot.</li>
+          <li>Trailer locations go straight into the client's yard management system.</li>
+          <li>Found ghost trailers that were in the system but not in the yard.</li>
+        </ul>
+        <div class="wins">
+          <div class="win"><b><span class="count" data-from="45" data-to="5">45</span> min</b><span>to find a trailer, was 45 min</span></div>
+          <div class="win"><b>100%</b><span>trailers tracked</span></div>
+        </div>
+      </div>
+      <div class="pvis">
+        <svg viewBox="0 0 520 330" role="img" aria-label="A yard mule drives between two rows of trailers, marking each one as found while an RTK base station pulses">
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#eef8ff" class="s-ink"/>
+          <!-- base station -->
+          <g transform="translate(468 46)">
+            <circle r="14" class="ring"/><circle r="14" class="ring d2"/><circle r="14" class="ring d3"/>
+            <path d="M-8 22 L0 -6 L8 22 Z" fill="#9B6BFF" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
+            <circle r="6" cy="-8" fill="#FFD60A" stroke="#000" stroke-width="3"/>
+          </g>
+          <text x="400" y="96" class="lbl">RTK base</text>
+          <!-- top row -->
+          <g stroke="#000" stroke-width="3">
+            <rect class="tr" x="30"  y="40" width="40" height="78" rx="4" style="animation-delay:0.0s"/>
+            <rect class="tr" x="80"  y="40" width="40" height="78" rx="4" style="animation-delay:0.8s"/>
+            <rect class="tr" x="130" y="40" width="40" height="78" rx="4" style="animation-delay:1.6s"/>
+            <rect class="tr" x="180" y="40" width="40" height="78" rx="4" style="animation-delay:2.4s"/>
+            <rect class="tr" x="230" y="40" width="40" height="78" rx="4" style="animation-delay:3.2s"/>
+            <rect class="tr" x="280" y="40" width="40" height="78" rx="4" style="animation-delay:4.0s"/>
+            <rect class="tr" x="330" y="40" width="40" height="78" rx="4" style="animation-delay:4.8s"/>
+          </g>
+          <!-- bottom row -->
+          <g stroke="#000" stroke-width="3">
+            <rect class="tr" x="30"  y="212" width="40" height="78" rx="4" style="animation-delay:0.0s"/>
+            <rect class="tr" x="80"  y="212" width="40" height="78" rx="4" style="animation-delay:0.8s"/>
+            <rect x="130" y="212" width="40" height="78" rx="4" fill="none" stroke-dasharray="6 5"/>
+            <rect class="tr" x="180" y="212" width="40" height="78" rx="4" style="animation-delay:2.4s"/>
+            <rect class="tr" x="230" y="212" width="40" height="78" rx="4" style="animation-delay:3.2s"/>
+            <rect class="tr" x="280" y="212" width="40" height="78" rx="4" style="animation-delay:4.0s"/>
+            <rect class="tr" x="330" y="212" width="40" height="78" rx="4" style="animation-delay:4.8s"/>
+            <rect class="tr" x="380" y="212" width="40" height="78" rx="4" style="animation-delay:5.6s"/>
+          </g>
+          <g class="ghost"><rect x="122" y="296" width="56" height="20" rx="10" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/><text x="131" y="311" class="lbl">ghost</text></g>
+          <!-- lane -->
+          <line x1="20" y1="165" x2="500" y2="165" stroke="#000" stroke-width="2" stroke-dasharray="10 10" opacity=".35"/>
+          <!-- mule -->
+          <g class="mule">
+            <path d="M20 165 L-10 125 L50 125 Z" fill="#FFD60A" opacity=".55"/>
+            <path d="M20 165 L-10 205 L50 205 Z" fill="#FFD60A" opacity=".55"/>
+            <rect x="2" y="150" width="40" height="30" rx="6" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
+            <rect x="28" y="154" width="12" height="22" rx="3" fill="#4FC3FF" stroke="#000" stroke-width="2"/>
+            <circle cx="14" cy="165" r="4" fill="#000"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- INVENTORY -->
+<section class="proj reveal" id="inventory">
+  <div class="wrap">
+    <article class="box pcard flip c-blue">
+      <div class="ptext">
+        <span class="pill">Jan 2025 to Nov 2025</span>
+        <h3>Inventory Asset Tracking</h3>
+        <div class="dates">41 ceiling cameras across one warehouse</div>
+        <ul>
+          <li>Led delivery across development, model training and QA on one timeline.</li>
+          <li>Spots forklifts, pallets and workers across the whole floor in real time.</li>
+          <li>Sorts every move as inbound or outbound and sends it to the client's WMS.</li>
+        </ul>
+        <div class="wins">
+          <div class="win"><b>41</b><span>cameras live</span></div>
+          <div class="win"><b>Real time</b><span>floor visibility</span></div>
+        </div>
+      </div>
+      <div class="pvis">
+        <svg viewBox="0 0 520 330" role="img" aria-label="Ceiling cameras watch a warehouse floor while a tracked forklift moves pallets and each move is sent to the WMS">
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#f6f6f6" class="s-ink"/>
+          <!-- racks -->
+          <g fill="#fff" stroke="#000" stroke-width="3">
+            <rect x="40" y="40" width="170" height="34" rx="4"/><rect x="250" y="40" width="170" height="34" rx="4"/>
+            <rect x="40" y="250" width="170" height="34" rx="4"/><rect x="250" y="250" width="170" height="34" rx="4"/>
+          </g>
+          <g fill="#FF9F1C" stroke="#000" stroke-width="2">
+            <rect x="52" y="48" width="22" height="18"/><rect x="84" y="48" width="22" height="18"/><rect x="150" y="48" width="22" height="18"/>
+            <rect x="262" y="48" width="22" height="18"/><rect x="326" y="48" width="22" height="18"/><rect x="388" y="48" width="22" height="18"/>
+            <rect x="52" y="258" width="22" height="18"/><rect x="118" y="258" width="22" height="18"/><rect x="294" y="258" width="22" height="18"/>
+          </g>
+          <!-- camera cones -->
+          <g opacity=".22" fill="#4FC3FF" stroke="#000" stroke-width="1.5">
+            <circle cx="125" cy="162" r="72"/><circle cx="335" cy="162" r="72"/>
+          </g>
+          <g fill="#000"><circle cx="125" cy="162" r="7"/><circle cx="335" cy="162" r="7"/></g>
+          <!-- dock / WMS -->
+          <rect x="456" y="120" width="48" height="84" rx="8" fill="#00E0A4" stroke="#000" stroke-width="3"/>
+          <text x="462" y="167" class="lbl">WMS</text>
+          <g class="ghost" style="animation-duration:2s"><circle cx="480" cy="110" r="6" fill="#FF3D7F" stroke="#000" stroke-width="2"/></g>
+          <!-- forklift tracked -->
+          <g>
+            <g>
+              <rect x="-22" y="-16" width="44" height="32" rx="5" fill="#FFD60A" stroke="#000" stroke-width="3"/>
+              <rect x="22" y="-10" width="14" height="4" fill="#000"/><rect x="22" y="6" width="14" height="4" fill="#000"/>
+              <rect x="-30" y="-24" width="70" height="48" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3" stroke-dasharray="7 5"/>
+              <rect x="-30" y="-44" width="76" height="20" rx="4" fill="#FF3D7F" stroke="#000" stroke-width="2"/>
+              <text x="-25" y="-29" class="lbl-w">forklift 0.97</text>
+              <animateMotion dur="7s" repeatCount="indefinite" rotate="0" path="M60 160 C 160 110, 260 210, 420 160 C 300 130, 160 200, 60 160 Z"/>
+            </g>
+          </g>
+          <!-- worker -->
+          <g>
+            <circle r="9" fill="#9B6BFF" stroke="#000" stroke-width="3"/>
+            <rect x="-16" y="-16" width="32" height="32" rx="3" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="5 4"/>
+            <animateMotion dur="9s" repeatCount="indefinite" path="M230 110 L 230 215 L 160 215 L 160 110 Z"/>
+          </g>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- GATE -->
+<section class="proj reveal" id="gate">
+  <div class="wrap">
+    <article class="box pcard c-pink">
+      <div class="ptext">
+        <span class="pill">Jan 2024 to Jan 2025</span>
+        <h3>Gate Automation</h3>
+        <div class="dates">Trucks check themselves in</div>
+        <ul>
+          <li>Cameras read the truck and trailer at the gate, so nobody waits for manual check-in.</li>
+          <li>An appointment system matches each truck to its booked slot.</li>
+          <li>Damage detection records each trailer's condition on arrival.</li>
+          <li>Every gate event goes into the client's YMS.</li>
+        </ul>
+        <div class="wins">
+          <div class="win"><b>&lt; 1 min</b><span>check-in, was 8 min</span></div>
+          <div class="win"><b>70%</b><span>less gate labor</span></div>
+        </div>
+      </div>
+      <div class="pvis">
+        <svg viewBox="0 0 520 330" role="img" aria-label="A truck pulls up to the gate, a camera reads its ID and checks for damage, the appointment is matched and the gate opens">
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#fff4f8" class="s-ink"/>
+          <rect x="6" y="196" width="508" height="70" fill="#d9d9d9" stroke="#000" stroke-width="3"/>
+          <line x1="20" y1="231" x2="500" y2="231" stroke="#fff" stroke-width="4" stroke-dasharray="20 14"/>
+          <!-- camera pole -->
+          <rect x="48" y="150" width="8" height="46" fill="#000"/>
+          <rect x="30" y="134" width="44" height="22" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/>
+          <path class="flash" d="M72 146 L230 140 L230 206 Z" fill="#FFD60A"/>
+          <!-- booth + arm -->
+          <rect x="450" y="140" width="46" height="56" rx="6" fill="#00E0A4" stroke="#000" stroke-width="3"/>
+          <rect class="arm" x="344" y="182" width="106" height="10" rx="4" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/>
+          <!-- truck -->
+          <g class="truck">
+            <rect x="110" y="138" width="170" height="70" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
+            <rect x="282" y="160" width="50" height="48" rx="6" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
+            <rect x="306" y="166" width="20" height="16" rx="3" fill="#4FC3FF" stroke="#000" stroke-width="2"/>
+            <circle cx="140" cy="212" r="12" fill="#000"/><circle cx="250" cy="212" r="12" fill="#000"/><circle cx="310" cy="212" r="12" fill="#000"/>
+            <rect class="ocr" x="124" y="150" width="96" height="30" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3"/>
+            <text x="132" y="170" class="lbl">TRLR 4821</text>
+            <rect class="sweep" x="112" y="140" width="6" height="66" fill="#00E0A4"/>
+          </g>
+          <!-- checks -->
+          <g class="ok k1"><rect x="22" y="28" width="150" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="36" y="47" class="lbl">ID read</text></g>
+          <g class="ok k2"><rect x="22" y="64" width="170" height="28" rx="14" fill="#FFD60A" stroke="#000" stroke-width="2.5"/><text x="36" y="83" class="lbl">Appointment matched</text></g>
+          <g class="ok k3"><rect x="22" y="100" width="150" height="28" rx="14" fill="#00E0A4" stroke="#000" stroke-width="2.5"/><text x="36" y="119" class="lbl">Damage logged</text></g>
+          <text x="22" y="300" class="lbl">Check-in time</text>
+          <rect x="130" y="288" width="240" height="16" rx="8" fill="#fff" stroke="#000" stroke-width="2.5"/>
+          <rect x="130" y="288" width="30" height="16" rx="8" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/>
+          <text x="380" y="301" class="lbl">under 1 min</text>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- S2U -->
+<section class="proj reveal" id="s2u">
+  <div class="wrap">
+    <article class="box pcard flip c-mint">
+      <div class="ptext">
+        <span class="pill">Mar 2022 to Jan 2024</span>
+        <h3>S2U-Connect</h3>
+        <div class="dates">Order packing, watched by cameras</div>
+        <ul>
+          <li>Ceiling and aisle cameras track workers, items and actions at every packing station.</li>
+          <li>Keeps track of people even in crowded, blocked views.</li>
+          <li>Pose detection for ergonomics, plus a check that flags items put in the wrong place.</li>
+          <li>Runs on Triton at the edge and alerts staff the moment something is off.</li>
+        </ul>
+        <div class="wins">
+          <div class="win"><b>+80%</b><span>packing accuracy</span></div>
+          <div class="win"><b>&lt; 500 ms</b><span>to alert</span></div>
+        </div>
+      </div>
+      <div class="pvis">
+        <svg viewBox="0 0 520 330" role="img" aria-label="Items move along a packing line into a box while one misplaced item is flagged, and an accuracy bar fills up">
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#effff9" class="s-ink"/>
+          <rect x="40" y="120" width="360" height="56" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
+          <g stroke="#000" stroke-width="2" opacity=".4"><line x1="80" y1="120" x2="80" y2="176"/><line x1="140" y1="120" x2="140" y2="176"/><line x1="200" y1="120" x2="200" y2="176"/><line x1="260" y1="120" x2="260" y2="176"/><line x1="320" y1="120" x2="320" y2="176"/></g>
+          <rect x="408" y="100" width="90" height="96" rx="8" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
+          <text x="432" y="154" class="lbl">Box</text>
+          <g class="item"><rect x="60" y="132" width="32" height="32" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/></g>
+          <g class="item i2"><rect x="60" y="132" width="32" height="32" rx="16" fill="#FFD60A" stroke="#000" stroke-width="3"/></g>
+          <g class="item i3"><rect x="60" y="132" width="32" height="32" rx="5" fill="#9B6BFF" stroke="#000" stroke-width="3"/></g>
+          <g class="item i4"><rect x="60" y="132" width="32" height="32" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/></g>
+          <!-- misplaced -->
+          <g class="bad">
+            <rect x="300" y="210" width="34" height="34" rx="5" fill="#FF3D7F" stroke="#000" stroke-width="3"/>
+            <rect x="292" y="202" width="50" height="50" rx="4" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/>
+            <rect x="350" y="214" width="108" height="26" rx="13" fill="#000"/>
+            <text x="362" y="232" class="lbl-w">wrong place</text>
+          </g>
+          <!-- worker pose -->
+          <g stroke="#000" stroke-width="4" stroke-linecap="round" fill="none">
+            <circle cx="150" cy="58" r="14" fill="#fff"/>
+            <line x1="150" y1="72" x2="150" y2="104"/><line x1="150" y1="82" x2="126" y2="114"/><line x1="150" y1="82" x2="176" y2="114"/>
+          </g>
+          <g fill="#00E0A4" stroke="#000" stroke-width="2"><circle cx="150" cy="58" r="4"/><circle cx="126" cy="114" r="4"/><circle cx="176" cy="114" r="4"/><circle cx="150" cy="82" r="4"/></g>
+          <text x="40" y="282" class="lbl">Packing accuracy</text>
+          <rect x="40" y="290" width="440" height="20" rx="10" fill="#fff" stroke="#000" stroke-width="2.5"/>
+          <rect class="bar" x="40" y="290" width="400" height="20" rx="10" fill="#00E0A4" stroke="#000" stroke-width="2.5"/>
+          <text x="410" y="282" class="lbl">+80%</text>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- DOCS -->
+<section class="proj reveal" id="docs">
+  <div class="wrap">
+    <article class="box pcard c-orange">
+      <div class="ptext">
+        <span class="pill">Oct 2021 to Mar 2022</span>
+        <h3>Statement Digitization</h3>
+        <div class="dates">Where it started, as an intern</div>
+        <ul>
+          <li>Read invoices, packing lists and delivery notes across messy, multi-page layouts.</li>
+          <li>Pulled out tables and key fields with OCR and layout rules.</li>
+          <li>Classified pages and handled image-heavy sections with vision-language models.</li>
+        </ul>
+        <div class="wins">
+          <div class="win"><b>Paper to rows</b><span>no manual typing</span></div>
+        </div>
+      </div>
+      <div class="pvis">
+        <svg viewBox="0 0 520 330" role="img" aria-label="A document is scanned line by line and its fields are pulled into a clean table">
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#fff8ee" class="s-ink"/>
+          <rect x="40" y="40" width="190" height="250" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
+          <g fill="#d9d9d9"><rect x="58" y="62" width="110" height="10" rx="5"/><rect x="58" y="84" width="150" height="8" rx="4"/><rect x="58" y="100" width="130" height="8" rx="4"/>
+          <rect x="58" y="138" width="150" height="8" rx="4"/><rect x="58" y="154" width="120" height="8" rx="4"/><rect x="58" y="196" width="150" height="8" rx="4"/><rect x="58" y="212" width="90" height="8" rx="4"/><rect x="58" y="250" width="150" height="8" rx="4"/></g>
+          <rect class="hl h1" x="52" y="56" width="124" height="22" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3"/>
+          <rect class="hl h2" x="52" y="132" width="162" height="36" rx="4" fill="none" stroke="#9B6BFF" stroke-width="3"/>
+          <rect class="hl h3" x="52" y="190" width="162" height="36" rx="4" fill="none" stroke="#4FC3FF" stroke-width="3"/>
+          <rect class="scanline" x="44" y="56" width="182" height="4" fill="#00E0A4"/>
+          <path d="M246 165 L282 165" stroke="#000" stroke-width="4" stroke-linecap="round"/><path d="M272 155 L284 165 L272 175" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="300" y="70" width="190" height="190" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
+          <rect x="300" y="70" width="190" height="34" rx="8" fill="#FFD60A" stroke="#000" stroke-width="3"/>
+          <text x="314" y="92" class="lbl">Extracted</text>
+          <g class="row r1"><rect x="314" y="118" width="162" height="30" rx="6" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/><text x="324" y="138" class="lbl">Invoice header</text></g>
+          <g class="row r2"><rect x="314" y="158" width="162" height="30" rx="6" fill="#9B6BFF" stroke="#000" stroke-width="2.5"/><text x="324" y="178" class="lbl">Line items</text></g>
+          <g class="row r3"><rect x="314" y="198" width="162" height="30" rx="6" fill="#4FC3FF" stroke="#000" stroke-width="2.5"/><text x="324" y="218" class="lbl">Totals</text></g>
+        </svg>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills reveal" id="skills">
+  <div class="wrap">
+    <h2 class="sec-title">What I work with</h2>
+    <div class="ribbon" aria-hidden="true"><div class="ribbon-track"><span>Triton</span><span>Jetson Orin</span><span>RTK GNSS</span><span>YOLO</span><span>OpenCV</span><span>PyTorch</span><span>TensorRT</span><span>GStreamer</span><span>Docker</span><span>Kubernetes</span><span>FastAPI</span><span>Redis</span><span>PoE networks</span><span>OCR</span><span>Multi-object tracking</span><span>YMS and WMS</span><span>Triton</span><span>Jetson Orin</span><span>RTK GNSS</span><span>YOLO</span><span>OpenCV</span><span>PyTorch</span><span>TensorRT</span><span>GStreamer</span><span>Docker</span><span>Kubernetes</span><span>FastAPI</span><span>Redis</span><span>PoE networks</span><span>OCR</span><span>Multi-object tracking</span><span>YMS and WMS</span></div></div>
+    <div class="sgrid">
+      <div class="box sk"><h3>Solution design</h3><div class="tags"><span>System architecture</span><span>Hardware and vendor selection</span><span>YMS and WMS integration</span><span>Client requirements</span><span>KPIs and SLAs</span><span>PoC to production</span><span>Team leadership</span></div></div>
+      <div class="box sk"><h3>Edge AI and inference</h3><div class="tags"><span>NVIDIA Jetson NX and AGX Orin</span><span>Triton Inference Server</span><span>TensorRT</span><span>ONNX</span><span>CUDA</span><span>Docker</span><span>Kubernetes</span><span>DVC</span><span>GitHub Actions</span><span>Jenkins</span></div></div>
+      <div class="box sk"><h3>Computer vision</h3><div class="tags"><span>PyTorch</span><span>OpenCV</span><span>YOLO</span><span>Detectron2</span><span>ResNet</span><span>DeepSORT</span><span>ByteTrack</span><span>BoT-SORT</span><span>Tesseract</span><span>PaddleOCR</span><span>CLIP</span><span>BLIP2</span><span>LangChain</span></div></div>
+      <div class="box sk"><h3>Cameras and positioning</h3><div class="tags"><span>IP and PTZ cameras</span><span>RTSP</span><span>ONVIF</span><span>GStreamer</span><span>FFMPEG</span><span>IR and night imaging</span><span>RTK GNSS</span><span>GNSS/INS</span><span>RTK base stations</span></div></div>
+      <div class="box sk"><h3>Networking and hardware</h3><div class="tags"><span>IP networking and subnetting</span><span>PoE camera networks</span><span>SSH</span><span>NTRIP</span><span>Serial devices</span><span>Rugged edge servers</span><span>Sensor mounting and calibration</span><span>UPS and solar power</span></div></div>
+      <div class="box sk"><h3>Backend, data and tools</h3><div class="tags"><span>Python</span><span>SQL (PostgreSQL)</span><span>Bash</span><span>FastAPI</span><span>Flask</span><span>Streamlit</span><span>Redis</span><span>AWS S3</span><span>pandas</span><span>NumPy</span><span>Prometheus</span><span>Grafana</span><span>OpenTelemetry</span><span>Git</span><span>Jira</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="awards reveal">
+  <div class="wrap">
+    <h2 class="sec-title">Recognition</h2>
+    <div class="agrid">
+      <div class="box award" style="background:var(--yellow)">
+        <svg class="medal" viewBox="0 0 80 80" aria-hidden="true">
+          <circle class="spinr" cx="40" cy="40" r="34" fill="#FF9F1C" stroke="#000" stroke-width="3" stroke-dasharray="8 6"/>
+          <circle cx="40" cy="40" r="24" fill="#fff" stroke="#000" stroke-width="3"/>
+          <path d="M40 26l4 9 9 .8-7 6 2 9-8-4.6-8 4.6 2-9-7-6 9-.8z" fill="#FFD60A" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        <div><h3>Top Gun Award</h3><p>Highest performer of the year at KoiReader, Feb 2026.</p></div>
+      </div>
+      <div class="box award" style="background:var(--purple)">
+        <svg class="medal" viewBox="0 0 80 80" aria-hidden="true">
+          <circle cx="40" cy="40" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+          <text x="40" y="52" text-anchor="middle" style="font:800 34px var(--display)">3×</text>
+        </svg>
+        <div><h3>Impact Award</h3><p>Three in a row: Aug 2023, Jan 2024 and Aug 2024.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="box foot">
+      <h2>Let's build something real.</h2>
+      <div class="links">
+        <a href="mailto:arjunpanwar01@yahoo.com">Email me</a>
+        <a href="https://www.linkedin.com/in/arjun-panwar/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { document.querySelectorAll('svg').forEach(function(s){ try{ s.pauseAnimations(); }catch(e){} }); }
+  function countDown(el){
+    var from=+el.dataset.from, to=+el.dataset.to, t0=null, dur=1600;
+    if (reduce){ el.textContent=to; return; }
+    function step(ts){ if(!t0) t0=ts; var p=Math.min((ts-t0)/dur,1); var e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(from+(to-from)*e); if(p<1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('on');
+        en.target.querySelectorAll('.count').forEach(function(c){ if(!c.dataset.done){ c.dataset.done=1; c.textContent='< '+c.dataset.from; countDownWrap(c);} });
+        io.unobserve(en.target); }
+    });
+  },{threshold:.25}) : null;
+  function countDownWrap(c){ var inner=document.createElement('span'); c.textContent=''; c.appendChild(document.createTextNode('< ')); c.appendChild(inner); inner.dataset.from=c.dataset.from; inner.dataset.to=c.dataset.to; countDown(inner); }
+  document.querySelectorAll('.reveal').forEach(function(s){ if(io) io.observe(s); else s.classList.add('on'); });
+})();
+</script>
+</body>
+</html>
