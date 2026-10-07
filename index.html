@@ -6,103 +6,99 @@
 <title>Arjun Panwar | Projects</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
-  --ink:#000;
-  --paper:#fffdf5;
-  --ground:#f4f0ff;
-  --yellow:#FFD60A; --pink:#FF3D7F; --orange:#FF9F1C; --mint:#00E0A4; --blue:#4FC3FF; --purple:#9B6BFF;
-  --muted:#3a3a3a;
-  --display:"Bricolage Grotesque", "Arial Black", system-ui, sans-serif;
-  --body:"DM Sans", "Helvetica Neue", Helvetica, system-ui, sans-serif;
+  --ink:#1E2328; --soft:#5B6470; --line:#C9CED4;
+  --paper:#FFFFFF; --panel:#F4F5F7; --ground:#E9ECEF;
+  --amber:#E0A21B; --steel:#3D6A8A; --steel-l:#8FB0C8; --ok:#3F7F74; --alert:#B4472F;
+  --title:#1E2328;
+  --display:"Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:"IBM Plex Sans", "Helvetica Neue", Helvetica, sans-serif;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){ --ground:#17132b; --paper:#fffdf5; }
-}
-:root[data-theme="dark"]{ --ground:#17132b; --paper:#fffdf5; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ground:#14181C; --title:#F1F3F5; } }
+:root[data-theme="dark"]{ --ground:#14181C; --title:#F1F3F5; }
 html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
 .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-.box{background:var(--paper);border:3px solid var(--ink);border-radius:18px;box-shadow:8px 8px 0 var(--ink)}
-h1,h2,h3{font-family:var(--display);margin:0;line-height:1}
+.box{background:var(--paper);border:1.5px solid var(--ink);border-radius:8px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05}
 
-/* ---------- HERO ---------- */
-.hero{padding:56px 0 40px}
-.hero-card{background:var(--yellow);padding:clamp(28px,5vw,64px);position:relative;overflow:hidden}
+/* HERO */
+.hero{padding:48px 0 32px}
+.hero-card{background:var(--ink);color:#F1F3F5;padding:clamp(28px,5vw,64px);position:relative;overflow:hidden;border-color:var(--ink)}
 .namebox{position:relative;display:inline-block;padding:10px 18px;margin:36px 0 8px}
-.namebox h1{font-size:clamp(52px,10vw,132px);font-weight:800;letter-spacing:-0.035em}
+.namebox h1{font-size:clamp(50px,9vw,118px);font-weight:700;letter-spacing:-0.03em;color:#fff}
 .det{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
-.det rect{fill:none;stroke:var(--ink);stroke-width:4;stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 1.4s .3s cubic-bezier(.6,0,.2,1) forwards}
-.tag{position:absolute;left:-3px;top:-34px;background:var(--ink);color:var(--yellow);font-weight:700;font-size:14px;padding:5px 10px;border-radius:6px 6px 6px 0;opacity:0;transform:translateY(8px);animation:pop .4s 1.5s forwards}
+.det rect{fill:none;stroke:var(--amber);stroke-width:2.5;stroke-dasharray:2000;stroke-dashoffset:2000;animation:draw 1.4s .3s cubic-bezier(.6,0,.2,1) forwards}
+.tag{position:absolute;left:-1px;top:-30px;background:var(--amber);color:var(--ink);font-weight:600;font-size:13px;padding:4px 9px;border-radius:3px 3px 3px 0;opacity:0;transform:translateY(8px);animation:pop .4s 1.5s forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes pop{to{opacity:1;transform:none}}
-.hero .lead{font-size:clamp(19px,2.2vw,24px);max-width:36ch;margin:14px 0 26px;font-weight:500}
-.chips{display:flex;flex-wrap:wrap;gap:12px}
-.chip{border:3px solid var(--ink);border-radius:999px;padding:8px 16px;font-weight:700;background:var(--paper);box-shadow:4px 4px 0 var(--ink)}
-.chip.p{background:var(--pink)} .chip.m{background:var(--mint)} .chip.b{background:var(--blue)}
-.scan{position:absolute;right:-60px;top:-60px;width:320px;height:320px;border:3px dashed var(--ink);border-radius:50%;opacity:.25;animation:spin 30s linear infinite}
-.scan.two{right:40px;top:40px;width:120px;height:120px;animation-duration:12s;animation-direction:reverse}
+.hero .lead{font-size:clamp(18px,2vw,22px);max-width:40ch;margin:14px 0 26px;color:#C9CED4}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{border:1px solid #4A535D;border-radius:4px;padding:7px 13px;font-weight:500;font-size:15px;color:#F1F3F5;background:transparent}
+.chip.p,.chip.m,.chip.b{background:transparent}
+.chip.m{border-color:var(--amber);color:var(--amber)}
+.scan{position:absolute;right:-80px;top:-80px;width:340px;height:340px;border:1px dashed #4A535D;border-radius:50%;animation:spin 40s linear infinite}
+.scan.two{right:30px;top:30px;width:130px;height:130px;animation-duration:16s;animation-direction:reverse;border-color:#5E6873}
 @keyframes spin{to{transform:rotate(360deg)}}
+nav.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:30px;border-top:1px solid #3A424B;padding-top:22px}
+nav.jump a{text-decoration:none;font-weight:500;font-size:15px;color:#C9CED4;padding:8px 12px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center}
+nav.jump a:hover{color:var(--ink);background:var(--amber)}
 
-nav.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-nav.jump a{text-decoration:none;font-weight:700;font-size:15px;border:3px solid var(--ink);border-radius:999px;padding:7px 14px;background:var(--paper);min-height:44px;display:inline-flex;align-items:center}
-nav.jump a:hover{background:var(--ink);color:var(--yellow)}
-
-/* ---------- PATH ---------- */
+/* PATH */
 .path{padding:30px 0}
-.path h2,.sec-title{font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-0.02em;margin-bottom:22px;color:var(--ink)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .path h2,:root:not([data-theme="light"]) .sec-title{color:#fff}}
-:root[data-theme="dark"] .path h2,:root[data-theme="dark"] .sec-title{color:#fff}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
-.step{padding:20px;position:relative;opacity:0;transform:translateY(20px)}
+.path h2,.sec-title{font-size:clamp(28px,4vw,40px);font-weight:700;letter-spacing:-0.015em;margin-bottom:20px;color:var(--title)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--ink);border-radius:8px;overflow:hidden;background:var(--paper)}
+.step{padding:22px;position:relative;opacity:0;transform:translateY(14px);border:0;border-radius:0;border-right:1px solid var(--line);background:var(--paper)}
+.step:last-child{border-right:0;background:var(--ink);color:#fff}
 .on .step{animation:rise .5s forwards}
-.on .step:nth-child(2){animation-delay:.25s}.on .step:nth-child(3){animation-delay:.5s}.on .step:nth-child(4){animation-delay:.75s}
+.on .step:nth-child(2){animation-delay:.2s}.on .step:nth-child(3){animation-delay:.4s}.on .step:nth-child(4){animation-delay:.6s}
 @keyframes rise{to{opacity:1;transform:none}}
-.step .yr{font-family:var(--display);font-weight:800;font-size:34px}
-.step .role{font-weight:700;margin-top:6px;line-height:1.25}
-.step:nth-child(1){background:var(--blue)}.step:nth-child(2){background:var(--mint)}.step:nth-child(3){background:var(--orange)}.step:nth-child(4){background:var(--pink)}
-.step .star{position:absolute;right:14px;top:14px;width:30px;height:30px}
+.step .yr{font-family:var(--display);font-weight:700;font-size:30px}
+.step .role{font-weight:500;margin-top:4px;line-height:1.3;color:var(--soft)}
+.step:last-child .role{color:#C9CED4}
+.step::before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--line)}
+.step:last-child::before{background:var(--amber)}
+.step .star{position:absolute;right:16px;top:18px;width:22px;height:22px}
 
-/* ---------- PROJECTS ---------- */
-.proj{padding:34px 0}
-.pcard{display:grid;grid-template-columns:1fr 1.15fr;gap:0;overflow:hidden}
+/* PROJECTS */
+.proj{padding:26px 0}
+.pcard{display:grid;grid-template-columns:1fr 1.15fr;overflow:hidden}
 .pcard.flip{grid-template-columns:1.15fr 1fr}
-.pcard.flip .ptext{order:2;border-left:3px solid var(--ink);border-right:0}
-.ptext{padding:clamp(24px,4vw,44px);border-right:3px solid var(--ink)}
-.pill{display:inline-block;border:3px solid var(--ink);border-radius:999px;padding:4px 12px;font-weight:700;font-size:14px;background:var(--paper)}
-.ptext h3{font-size:clamp(30px,4vw,46px);font-weight:800;letter-spacing:-0.02em;margin:16px 0 6px}
-.dates{font-weight:700;opacity:.75;margin-bottom:14px}
-.ptext ul{margin:0 0 20px;padding-left:20px}
-.ptext li{margin-bottom:6px}
-.wins{display:flex;flex-wrap:wrap;gap:10px}
-.win{border:3px solid var(--ink);border-radius:12px;background:var(--paper);padding:8px 12px;box-shadow:4px 4px 0 var(--ink)}
-.win b{font-family:var(--display);font-size:24px;display:block;line-height:1.05}
-.win > span{font-size:13px;font-weight:600;display:block}
-.pvis{padding:20px;display:flex;align-items:center;justify-content:center;background:var(--paper);min-height:340px}
+.pcard.flip .ptext{order:2;border-left:1.5px solid var(--ink);border-right:0}
+.ptext{padding:clamp(24px,4vw,44px);border-right:1.5px solid var(--ink);background:var(--paper)}
+.pill{display:inline-block;font-weight:600;font-size:14px;color:var(--steel);padding:0;border:0;background:none}
+.ptext h3{font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-0.02em;margin:10px 0 6px}
+.dates{font-weight:500;color:var(--soft);margin-bottom:16px}
+.ptext ul{margin:0 0 22px;padding-left:20px}
+.ptext li{margin-bottom:7px}
+.ptext li::marker{color:var(--amber)}
+.wins{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);padding-top:16px}
+.win{padding:0 22px 0 0;margin-right:22px;border-right:1px solid var(--line)}
+.win:last-child{border-right:0;margin-right:0}
+.win b{font-family:var(--display);font-size:28px;display:block;line-height:1.1;font-weight:700}
+.win > span{font-size:13px;font-weight:500;color:var(--soft);display:block}
+.pvis{padding:22px;display:flex;align-items:center;justify-content:center;background:var(--panel);min-height:340px}
 .pvis svg{width:100%;height:auto;max-width:560px}
-.c-yellow .ptext{background:var(--yellow)} .c-pink .ptext{background:var(--pink)} .c-orange .ptext{background:var(--orange)}
-.c-mint .ptext{background:var(--mint)} .c-blue .ptext{background:var(--blue)}
 
-/* scene shared */
-.s-ink{stroke:#000;stroke-width:3;fill:none}
-.lbl{font:700 13px var(--body);fill:#000}
-.lbl-w{font:700 12px var(--body);fill:#fff}
-
+.s-ink{stroke:#1E2328;stroke-width:1.5;fill:none}
+.lbl{font:600 13px var(--body);fill:#1E2328}
+.lbl-w{font:600 12px var(--body);fill:#fff}
 /* yard */
 .mule{animation:drive 7s linear infinite}
 @keyframes drive{0%{transform:translateX(0)}100%{transform:translateX(430px)}}
-.tr{fill:#d9d9d9;animation:hit 7s linear infinite}
-@keyframes hit{0%,6%{fill:#d9d9d9}9%,94%{fill:#00E0A4}100%{fill:#d9d9d9}}
+.tr{fill:#DDE1E5;animation:hit 7s linear infinite}
+@keyframes hit{0%,6%{fill:#DDE1E5}9%,94%{fill:#3F7F74}100%{fill:#DDE1E5}}
 .ghost{animation:blink 1.2s steps(2) infinite}
 @keyframes blink{50%{opacity:.15}}
-.ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite;fill:none;stroke:#000;stroke-width:2.5}
+.ring{transform-box:fill-box;transform-origin:center;animation:ring 2.4s ease-out infinite;fill:none;stroke:#1E2328;stroke-width:1.5}
 .ring.d2{animation-delay:.8s}.ring.d3{animation-delay:1.6s}
 @keyframes ring{0%{transform:scale(.3);opacity:1}100%{transform:scale(2.4);opacity:0}}
 
@@ -150,49 +146,52 @@ nav.jump a:hover{background:var(--ink);color:var(--yellow)}
 @keyframes r3{0%,68%{opacity:0;transform:translateX(-14px)}72%,92%{opacity:1;transform:none}100%{opacity:0}}
 
 
+
 /* skills */
-.skills{padding:34px 0}
-.ribbon{overflow:hidden;border:3px solid var(--ink);border-radius:999px;background:var(--ink);box-shadow:6px 6px 0 var(--purple);margin-bottom:26px}
-.ribbon-track{display:flex;gap:28px;width:max-content;padding:12px 0;animation:marq 32s linear infinite}
+.skills{padding:30px 0}
+.ribbon{overflow:hidden;border-top:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);margin-bottom:24px}
+.ribbon-track{display:flex;gap:34px;width:max-content;padding:12px 0;animation:marq 40s linear infinite}
 .ribbon:hover .ribbon-track{animation-play-state:paused}
-.ribbon-track span{font-family:var(--display);font-weight:800;font-size:22px;color:var(--yellow);white-space:nowrap}
-.ribbon-track span:nth-child(3n+2){color:var(--mint)}.ribbon-track span:nth-child(3n){color:var(--pink)}
+.ribbon-track span{font-family:var(--display);font-weight:600;font-size:20px;color:var(--title);white-space:nowrap}
+.ribbon-track span::after{content:"";display:inline-block;width:6px;height:6px;background:var(--amber);margin-left:34px;vertical-align:middle;transform:rotate(45deg)}
 @keyframes marq{to{transform:translateX(-50%)}}
-.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.sk{padding:22px;opacity:0;transform:translateY(16px)}
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sk{padding:22px;opacity:0;transform:translateY(14px)}
 .on .sk{animation:rise .45s forwards}
 .on .sk:nth-child(2){animation-delay:.08s}.on .sk:nth-child(3){animation-delay:.16s}.on .sk:nth-child(4){animation-delay:.24s}
 .on .sk:nth-child(5){animation-delay:.32s}.on .sk:nth-child(6){animation-delay:.4s}
-.sk h3{font-size:24px;font-weight:800;margin-bottom:12px}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{border:2.5px solid var(--ink);border-radius:999px;padding:4px 11px;font-size:14px;font-weight:600;background:var(--paper)}
-.sk.wide{grid-column:span 2}
-.sk:nth-child(1){background:var(--yellow)}.sk:nth-child(2){background:var(--blue)}.sk:nth-child(3){background:var(--mint)}
-.sk:nth-child(4){background:var(--orange)}.sk:nth-child(5){background:var(--pink)}.sk:nth-child(6){background:var(--purple)}
-@media (max-width:860px){.sgrid{grid-template-columns:1fr}.sk.wide{grid-column:auto}}
+.sk h3{font-size:20px;font-weight:700;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sk:first-child{background:var(--ink);color:#fff}
+.sk:first-child h3{border-color:#3A424B}
+.sk:first-child .tags span{background:transparent;color:#F1F3F5;border-color:#4A535D}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{border:1px solid var(--line);border-radius:4px;padding:3px 9px;font-size:14px;font-weight:500;background:var(--panel)}
+@media (max-width:860px){.sgrid{grid-template-columns:1fr}}
 
 /* awards + footer */
-.awards{padding:34px 0 20px}
-.agrid{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
-.award{padding:28px;display:flex;gap:20px;align-items:center}
-.award h3{font-size:30px;font-weight:800}
-.award p{margin:6px 0 0;font-weight:500}
-.medal{flex:none;width:76px;height:76px}
+.awards{padding:30px 0 20px}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.award{padding:26px;display:flex;gap:20px;align-items:center}
+.award h3{font-size:26px;font-weight:700}
+.award p{margin:6px 0 0;color:var(--soft)}
+.medal{flex:none;width:68px;height:68px}
 .medal circle{transform-box:fill-box;transform-origin:center}
-.on .medal .spinr{animation:spin 8s linear infinite}
-footer{padding:30px 0 60px}
-.foot{background:var(--ink);color:#fff;padding:clamp(26px,4vw,44px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-color:#000;box-shadow:8px 8px 0 var(--purple)}
-.foot h2{font-size:clamp(28px,4vw,44px);font-weight:800}
-.foot a{background:var(--yellow);color:#000;border:3px solid #fff;border-radius:999px;padding:10px 18px;font-weight:700;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
-.foot a:hover{background:var(--mint)}
+.on .medal .spinr{animation:spin 10s linear infinite}
+footer{padding:26px 0 60px}
+.foot{background:var(--ink);color:#fff;padding:clamp(26px,4vw,44px);display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+.foot h2{font-size:clamp(26px,3.6vw,38px);font-weight:700}
+.foot a{background:var(--amber);color:var(--ink);border-radius:4px;padding:10px 18px;font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.foot a+a{background:transparent;color:#fff;border:1px solid #5E6873}
+.foot a:hover{filter:brightness(1.08)}
 .links{display:flex;flex-wrap:wrap;gap:12px}
-
 @media (max-width:860px){
   .pcard,.pcard.flip{grid-template-columns:1fr}
-  .ptext,.pcard.flip .ptext{order:0;border-right:0;border-left:0;border-bottom:3px solid var(--ink)}
+  .ptext,.pcard.flip .ptext{order:0;border-right:0;border-left:0;border-bottom:1.5px solid var(--ink)}
   .steps{grid-template-columns:1fr 1fr}
+  .step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}
   .agrid{grid-template-columns:1fr}
   .pvis{min-height:0}
+  .win{margin-bottom:10px}
 }
 @media (prefers-reduced-motion: reduce){
   *,*::before,*::after{animation:none !important;transition:none !important}
@@ -233,7 +232,7 @@ footer{padding:30px 0 60px}
       <div class="box step"><div class="yr">2021</div><div class="role">Python Developer intern</div></div>
       <div class="box step"><div class="yr">2022</div><div class="role">Associate CV Engineer</div></div>
       <div class="box step"><div class="yr">2024</div><div class="role">Computer Vision Engineer</div></div>
-      <div class="box step"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.6 1.7 7.3L12 17.8 5.6 21.5l1.7-7.3L2 9.6 9 9z" fill="#FFD60A" stroke="#000" stroke-width="2" stroke-linejoin="round"/></svg><div class="yr">2026</div><div class="role">Staff CV Engineer, leading a team of 15</div></div>
+      <div class="box step"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7 7 .6-5.3 4.6 1.7 7.3L12 17.8 5.6 21.5l1.7-7.3L2 9.6 9 9z" fill="#E0A21B" stroke="#1E2328" stroke-width="2" stroke-linejoin="round"/></svg><div class="yr">2026</div><div class="role">Staff CV Engineer, leading a team of 15</div></div>
     </div>
   </div>
 </section>
@@ -259,16 +258,16 @@ footer{padding:30px 0 60px}
       </div>
       <div class="pvis">
         <svg viewBox="0 0 520 330" role="img" aria-label="A yard mule drives between two rows of trailers, marking each one as found while an RTK base station pulses">
-          <rect x="6" y="6" width="508" height="318" rx="14" fill="#eef8ff" class="s-ink"/>
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#FFFFFF" class="s-ink"/>
           <!-- base station -->
           <g transform="translate(468 46)">
             <circle r="14" class="ring"/><circle r="14" class="ring d2"/><circle r="14" class="ring d3"/>
-            <path d="M-8 22 L0 -6 L8 22 Z" fill="#9B6BFF" stroke="#000" stroke-width="3" stroke-linejoin="round"/>
-            <circle r="6" cy="-8" fill="#FFD60A" stroke="#000" stroke-width="3"/>
+            <path d="M-8 22 L0 -6 L8 22 Z" fill="#3D6A8A" stroke="#1E2328" stroke-width="1.75" stroke-linejoin="round"/>
+            <circle r="6" cy="-8" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
           </g>
           <text x="400" y="96" class="lbl">RTK base</text>
           <!-- top row -->
-          <g stroke="#000" stroke-width="3">
+          <g stroke="#1E2328" stroke-width="1.75">
             <rect class="tr" x="30"  y="40" width="40" height="78" rx="4" style="animation-delay:0.0s"/>
             <rect class="tr" x="80"  y="40" width="40" height="78" rx="4" style="animation-delay:0.8s"/>
             <rect class="tr" x="130" y="40" width="40" height="78" rx="4" style="animation-delay:1.6s"/>
@@ -278,7 +277,7 @@ footer{padding:30px 0 60px}
             <rect class="tr" x="330" y="40" width="40" height="78" rx="4" style="animation-delay:4.8s"/>
           </g>
           <!-- bottom row -->
-          <g stroke="#000" stroke-width="3">
+          <g stroke="#1E2328" stroke-width="1.75">
             <rect class="tr" x="30"  y="212" width="40" height="78" rx="4" style="animation-delay:0.0s"/>
             <rect class="tr" x="80"  y="212" width="40" height="78" rx="4" style="animation-delay:0.8s"/>
             <rect x="130" y="212" width="40" height="78" rx="4" fill="none" stroke-dasharray="6 5"/>
@@ -288,16 +287,16 @@ footer{padding:30px 0 60px}
             <rect class="tr" x="330" y="212" width="40" height="78" rx="4" style="animation-delay:4.8s"/>
             <rect class="tr" x="380" y="212" width="40" height="78" rx="4" style="animation-delay:5.6s"/>
           </g>
-          <g class="ghost"><rect x="122" y="296" width="56" height="20" rx="10" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/><text x="131" y="311" class="lbl">ghost</text></g>
+          <g class="ghost"><rect x="122" y="296" width="56" height="20" rx="10" fill="#B4472F" stroke="#1E2328" stroke-width="1.5"/><text x="131" y="311" class="lbl-w">ghost</text></g>
           <!-- lane -->
-          <line x1="20" y1="165" x2="500" y2="165" stroke="#000" stroke-width="2" stroke-dasharray="10 10" opacity=".35"/>
+          <line x1="20" y1="165" x2="500" y2="165" stroke="#1E2328" stroke-width="2" stroke-dasharray="10 10" opacity=".35"/>
           <!-- mule -->
           <g class="mule">
-            <path d="M20 165 L-10 125 L50 125 Z" fill="#FFD60A" opacity=".55"/>
-            <path d="M20 165 L-10 205 L50 205 Z" fill="#FFD60A" opacity=".55"/>
-            <rect x="2" y="150" width="40" height="30" rx="6" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
-            <rect x="28" y="154" width="12" height="22" rx="3" fill="#4FC3FF" stroke="#000" stroke-width="2"/>
-            <circle cx="14" cy="165" r="4" fill="#000"/>
+            <path d="M20 165 L-10 125 L50 125 Z" fill="#E0A21B" opacity=".55"/>
+            <path d="M20 165 L-10 205 L50 205 Z" fill="#E0A21B" opacity=".55"/>
+            <rect x="2" y="150" width="40" height="30" rx="6" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
+            <rect x="28" y="154" width="12" height="22" rx="3" fill="#8FB0C8" stroke="#1E2328" stroke-width="2"/>
+            <circle cx="14" cy="165" r="4" fill="#1E2328"/>
           </g>
         </svg>
       </div>
@@ -325,41 +324,41 @@ footer{padding:30px 0 60px}
       </div>
       <div class="pvis">
         <svg viewBox="0 0 520 330" role="img" aria-label="Ceiling cameras watch a warehouse floor while a tracked forklift moves pallets and each move is sent to the WMS">
-          <rect x="6" y="6" width="508" height="318" rx="14" fill="#f6f6f6" class="s-ink"/>
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#FFFFFF" class="s-ink"/>
           <!-- racks -->
-          <g fill="#fff" stroke="#000" stroke-width="3">
+          <g fill="#fff" stroke="#1E2328" stroke-width="1.75">
             <rect x="40" y="40" width="170" height="34" rx="4"/><rect x="250" y="40" width="170" height="34" rx="4"/>
             <rect x="40" y="250" width="170" height="34" rx="4"/><rect x="250" y="250" width="170" height="34" rx="4"/>
           </g>
-          <g fill="#FF9F1C" stroke="#000" stroke-width="2">
+          <g fill="#E0A21B" stroke="#1E2328" stroke-width="2">
             <rect x="52" y="48" width="22" height="18"/><rect x="84" y="48" width="22" height="18"/><rect x="150" y="48" width="22" height="18"/>
             <rect x="262" y="48" width="22" height="18"/><rect x="326" y="48" width="22" height="18"/><rect x="388" y="48" width="22" height="18"/>
             <rect x="52" y="258" width="22" height="18"/><rect x="118" y="258" width="22" height="18"/><rect x="294" y="258" width="22" height="18"/>
           </g>
           <!-- camera cones -->
-          <g opacity=".22" fill="#4FC3FF" stroke="#000" stroke-width="1.5">
+          <g opacity=".22" fill="#8FB0C8" stroke="#1E2328" stroke-width="1.5">
             <circle cx="125" cy="162" r="72"/><circle cx="335" cy="162" r="72"/>
           </g>
-          <g fill="#000"><circle cx="125" cy="162" r="7"/><circle cx="335" cy="162" r="7"/></g>
+          <g fill="#1E2328"><circle cx="125" cy="162" r="7"/><circle cx="335" cy="162" r="7"/></g>
           <!-- dock / WMS -->
-          <rect x="456" y="120" width="48" height="84" rx="8" fill="#00E0A4" stroke="#000" stroke-width="3"/>
-          <text x="462" y="167" class="lbl">WMS</text>
-          <g class="ghost" style="animation-duration:2s"><circle cx="480" cy="110" r="6" fill="#FF3D7F" stroke="#000" stroke-width="2"/></g>
+          <rect x="456" y="120" width="48" height="84" rx="8" fill="#3F7F74" stroke="#1E2328" stroke-width="1.75"/>
+          <text x="462" y="167" class="lbl-w">WMS</text>
+          <g class="ghost" style="animation-duration:2s"><circle cx="480" cy="110" r="6" fill="#B4472F" stroke="#1E2328" stroke-width="2"/></g>
           <!-- forklift tracked -->
           <g>
             <g>
-              <rect x="-22" y="-16" width="44" height="32" rx="5" fill="#FFD60A" stroke="#000" stroke-width="3"/>
-              <rect x="22" y="-10" width="14" height="4" fill="#000"/><rect x="22" y="6" width="14" height="4" fill="#000"/>
-              <rect x="-30" y="-24" width="70" height="48" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3" stroke-dasharray="7 5"/>
-              <rect x="-30" y="-44" width="76" height="20" rx="4" fill="#FF3D7F" stroke="#000" stroke-width="2"/>
+              <rect x="-22" y="-16" width="44" height="32" rx="5" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
+              <rect x="22" y="-10" width="14" height="4" fill="#1E2328"/><rect x="22" y="6" width="14" height="4" fill="#1E2328"/>
+              <rect x="-30" y="-24" width="70" height="48" rx="4" fill="none" stroke="#B4472F" stroke-width="1.75" stroke-dasharray="7 5"/>
+              <rect x="-30" y="-44" width="76" height="20" rx="4" fill="#B4472F" stroke="#1E2328" stroke-width="2"/>
               <text x="-25" y="-29" class="lbl-w">forklift 0.97</text>
               <animateMotion dur="7s" repeatCount="indefinite" rotate="0" path="M60 160 C 160 110, 260 210, 420 160 C 300 130, 160 200, 60 160 Z"/>
             </g>
           </g>
           <!-- worker -->
           <g>
-            <circle r="9" fill="#9B6BFF" stroke="#000" stroke-width="3"/>
-            <rect x="-16" y="-16" width="32" height="32" rx="3" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="5 4"/>
+            <circle r="9" fill="#3D6A8A" stroke="#1E2328" stroke-width="1.75"/>
+            <rect x="-16" y="-16" width="32" height="32" rx="3" fill="none" stroke="#1E2328" stroke-width="1.5" stroke-dasharray="5 4"/>
             <animateMotion dur="9s" repeatCount="indefinite" path="M230 110 L 230 215 L 160 215 L 160 110 Z"/>
           </g>
         </svg>
@@ -389,33 +388,33 @@ footer{padding:30px 0 60px}
       </div>
       <div class="pvis">
         <svg viewBox="0 0 520 330" role="img" aria-label="A truck pulls up to the gate, a camera reads its ID and checks for damage, the appointment is matched and the gate opens">
-          <rect x="6" y="6" width="508" height="318" rx="14" fill="#fff4f8" class="s-ink"/>
-          <rect x="6" y="196" width="508" height="70" fill="#d9d9d9" stroke="#000" stroke-width="3"/>
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#FFFFFF" class="s-ink"/>
+          <rect x="6" y="196" width="508" height="70" fill="#DDE1E5" stroke="#1E2328" stroke-width="1.75"/>
           <line x1="20" y1="231" x2="500" y2="231" stroke="#fff" stroke-width="4" stroke-dasharray="20 14"/>
           <!-- camera pole -->
-          <rect x="48" y="150" width="8" height="46" fill="#000"/>
-          <rect x="30" y="134" width="44" height="22" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/>
-          <path class="flash" d="M72 146 L230 140 L230 206 Z" fill="#FFD60A"/>
+          <rect x="48" y="150" width="8" height="46" fill="#1E2328"/>
+          <rect x="30" y="134" width="44" height="22" rx="5" fill="#8FB0C8" stroke="#1E2328" stroke-width="1.75"/>
+          <path class="flash" d="M72 146 L230 140 L230 206 Z" fill="#E0A21B"/>
           <!-- booth + arm -->
-          <rect x="450" y="140" width="46" height="56" rx="6" fill="#00E0A4" stroke="#000" stroke-width="3"/>
-          <rect class="arm" x="344" y="182" width="106" height="10" rx="4" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/>
+          <rect x="450" y="140" width="46" height="56" rx="6" fill="#3F7F74" stroke="#1E2328" stroke-width="1.75"/>
+          <rect class="arm" x="344" y="182" width="106" height="10" rx="4" fill="#B4472F" stroke="#1E2328" stroke-width="1.5"/>
           <!-- truck -->
           <g class="truck">
-            <rect x="110" y="138" width="170" height="70" rx="6" fill="#fff" stroke="#000" stroke-width="3"/>
-            <rect x="282" y="160" width="50" height="48" rx="6" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
-            <rect x="306" y="166" width="20" height="16" rx="3" fill="#4FC3FF" stroke="#000" stroke-width="2"/>
-            <circle cx="140" cy="212" r="12" fill="#000"/><circle cx="250" cy="212" r="12" fill="#000"/><circle cx="310" cy="212" r="12" fill="#000"/>
-            <rect class="ocr" x="124" y="150" width="96" height="30" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3"/>
+            <rect x="110" y="138" width="170" height="70" rx="6" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
+            <rect x="282" y="160" width="50" height="48" rx="6" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
+            <rect x="306" y="166" width="20" height="16" rx="3" fill="#8FB0C8" stroke="#1E2328" stroke-width="2"/>
+            <circle cx="140" cy="212" r="12" fill="#1E2328"/><circle cx="250" cy="212" r="12" fill="#1E2328"/><circle cx="310" cy="212" r="12" fill="#1E2328"/>
+            <rect class="ocr" x="124" y="150" width="96" height="30" rx="4" fill="none" stroke="#B4472F" stroke-width="1.75"/>
             <text x="132" y="170" class="lbl">TRLR 4821</text>
-            <rect class="sweep" x="112" y="140" width="6" height="66" fill="#00E0A4"/>
+            <rect class="sweep" x="112" y="140" width="6" height="66" fill="#3F7F74"/>
           </g>
           <!-- checks -->
-          <g class="ok k1"><rect x="22" y="28" width="150" height="28" rx="14" fill="#fff" stroke="#000" stroke-width="2.5"/><text x="36" y="47" class="lbl">ID read</text></g>
-          <g class="ok k2"><rect x="22" y="64" width="170" height="28" rx="14" fill="#FFD60A" stroke="#000" stroke-width="2.5"/><text x="36" y="83" class="lbl">Appointment matched</text></g>
-          <g class="ok k3"><rect x="22" y="100" width="150" height="28" rx="14" fill="#00E0A4" stroke="#000" stroke-width="2.5"/><text x="36" y="119" class="lbl">Damage logged</text></g>
+          <g class="ok k1"><rect x="22" y="28" width="150" height="28" rx="14" fill="#fff" stroke="#1E2328" stroke-width="1.5"/><text x="36" y="47" class="lbl">ID read</text></g>
+          <g class="ok k2"><rect x="22" y="64" width="170" height="28" rx="14" fill="#E0A21B" stroke="#1E2328" stroke-width="1.5"/><text x="36" y="83" class="lbl">Appointment matched</text></g>
+          <g class="ok k3"><rect x="22" y="100" width="150" height="28" rx="14" fill="#3F7F74" stroke="#1E2328" stroke-width="1.5"/><text x="36" y="119" class="lbl">Damage logged</text></g>
           <text x="22" y="300" class="lbl">Check-in time</text>
-          <rect x="130" y="288" width="240" height="16" rx="8" fill="#fff" stroke="#000" stroke-width="2.5"/>
-          <rect x="130" y="288" width="30" height="16" rx="8" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/>
+          <rect x="130" y="288" width="240" height="16" rx="8" fill="#fff" stroke="#1E2328" stroke-width="1.5"/>
+          <rect x="130" y="288" width="30" height="16" rx="8" fill="#B4472F" stroke="#1E2328" stroke-width="1.5"/>
           <text x="380" y="301" class="lbl">under 1 min</text>
         </svg>
       </div>
@@ -444,31 +443,31 @@ footer{padding:30px 0 60px}
       </div>
       <div class="pvis">
         <svg viewBox="0 0 520 330" role="img" aria-label="Items move along a packing line into a box while one misplaced item is flagged, and an accuracy bar fills up">
-          <rect x="6" y="6" width="508" height="318" rx="14" fill="#effff9" class="s-ink"/>
-          <rect x="40" y="120" width="360" height="56" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
-          <g stroke="#000" stroke-width="2" opacity=".4"><line x1="80" y1="120" x2="80" y2="176"/><line x1="140" y1="120" x2="140" y2="176"/><line x1="200" y1="120" x2="200" y2="176"/><line x1="260" y1="120" x2="260" y2="176"/><line x1="320" y1="120" x2="320" y2="176"/></g>
-          <rect x="408" y="100" width="90" height="96" rx="8" fill="#FF9F1C" stroke="#000" stroke-width="3"/>
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#FFFFFF" class="s-ink"/>
+          <rect x="40" y="120" width="360" height="56" rx="8" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
+          <g stroke="#1E2328" stroke-width="2" opacity=".4"><line x1="80" y1="120" x2="80" y2="176"/><line x1="140" y1="120" x2="140" y2="176"/><line x1="200" y1="120" x2="200" y2="176"/><line x1="260" y1="120" x2="260" y2="176"/><line x1="320" y1="120" x2="320" y2="176"/></g>
+          <rect x="408" y="100" width="90" height="96" rx="8" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
           <text x="432" y="154" class="lbl">Box</text>
-          <g class="item"><rect x="60" y="132" width="32" height="32" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/></g>
-          <g class="item i2"><rect x="60" y="132" width="32" height="32" rx="16" fill="#FFD60A" stroke="#000" stroke-width="3"/></g>
-          <g class="item i3"><rect x="60" y="132" width="32" height="32" rx="5" fill="#9B6BFF" stroke="#000" stroke-width="3"/></g>
-          <g class="item i4"><rect x="60" y="132" width="32" height="32" rx="5" fill="#4FC3FF" stroke="#000" stroke-width="3"/></g>
+          <g class="item"><rect x="60" y="132" width="32" height="32" rx="5" fill="#8FB0C8" stroke="#1E2328" stroke-width="1.75"/></g>
+          <g class="item i2"><rect x="60" y="132" width="32" height="32" rx="16" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/></g>
+          <g class="item i3"><rect x="60" y="132" width="32" height="32" rx="5" fill="#3D6A8A" stroke="#1E2328" stroke-width="1.75"/></g>
+          <g class="item i4"><rect x="60" y="132" width="32" height="32" rx="5" fill="#8FB0C8" stroke="#1E2328" stroke-width="1.75"/></g>
           <!-- misplaced -->
           <g class="bad">
-            <rect x="300" y="210" width="34" height="34" rx="5" fill="#FF3D7F" stroke="#000" stroke-width="3"/>
-            <rect x="292" y="202" width="50" height="50" rx="4" fill="none" stroke="#000" stroke-width="2.5" stroke-dasharray="6 4"/>
-            <rect x="350" y="214" width="108" height="26" rx="13" fill="#000"/>
+            <rect x="300" y="210" width="34" height="34" rx="5" fill="#B4472F" stroke="#1E2328" stroke-width="1.75"/>
+            <rect x="292" y="202" width="50" height="50" rx="4" fill="none" stroke="#1E2328" stroke-width="1.5" stroke-dasharray="6 4"/>
+            <rect x="350" y="214" width="108" height="26" rx="13" fill="#1E2328"/>
             <text x="362" y="232" class="lbl-w">wrong place</text>
           </g>
           <!-- worker pose -->
-          <g stroke="#000" stroke-width="4" stroke-linecap="round" fill="none">
+          <g stroke="#1E2328" stroke-width="4" stroke-linecap="round" fill="none">
             <circle cx="150" cy="58" r="14" fill="#fff"/>
             <line x1="150" y1="72" x2="150" y2="104"/><line x1="150" y1="82" x2="126" y2="114"/><line x1="150" y1="82" x2="176" y2="114"/>
           </g>
-          <g fill="#00E0A4" stroke="#000" stroke-width="2"><circle cx="150" cy="58" r="4"/><circle cx="126" cy="114" r="4"/><circle cx="176" cy="114" r="4"/><circle cx="150" cy="82" r="4"/></g>
+          <g fill="#3F7F74" stroke="#1E2328" stroke-width="2"><circle cx="150" cy="58" r="4"/><circle cx="126" cy="114" r="4"/><circle cx="176" cy="114" r="4"/><circle cx="150" cy="82" r="4"/></g>
           <text x="40" y="282" class="lbl">Packing accuracy</text>
-          <rect x="40" y="290" width="440" height="20" rx="10" fill="#fff" stroke="#000" stroke-width="2.5"/>
-          <rect class="bar" x="40" y="290" width="400" height="20" rx="10" fill="#00E0A4" stroke="#000" stroke-width="2.5"/>
+          <rect x="40" y="290" width="440" height="20" rx="10" fill="#fff" stroke="#1E2328" stroke-width="1.5"/>
+          <rect class="bar" x="40" y="290" width="400" height="20" rx="10" fill="#3F7F74" stroke="#1E2328" stroke-width="1.5"/>
           <text x="410" y="282" class="lbl">+80%</text>
         </svg>
       </div>
@@ -495,21 +494,21 @@ footer{padding:30px 0 60px}
       </div>
       <div class="pvis">
         <svg viewBox="0 0 520 330" role="img" aria-label="A document is scanned line by line and its fields are pulled into a clean table">
-          <rect x="6" y="6" width="508" height="318" rx="14" fill="#fff8ee" class="s-ink"/>
-          <rect x="40" y="40" width="190" height="250" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
-          <g fill="#d9d9d9"><rect x="58" y="62" width="110" height="10" rx="5"/><rect x="58" y="84" width="150" height="8" rx="4"/><rect x="58" y="100" width="130" height="8" rx="4"/>
+          <rect x="6" y="6" width="508" height="318" rx="14" fill="#FFFFFF" class="s-ink"/>
+          <rect x="40" y="40" width="190" height="250" rx="8" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
+          <g fill="#DDE1E5"><rect x="58" y="62" width="110" height="10" rx="5"/><rect x="58" y="84" width="150" height="8" rx="4"/><rect x="58" y="100" width="130" height="8" rx="4"/>
           <rect x="58" y="138" width="150" height="8" rx="4"/><rect x="58" y="154" width="120" height="8" rx="4"/><rect x="58" y="196" width="150" height="8" rx="4"/><rect x="58" y="212" width="90" height="8" rx="4"/><rect x="58" y="250" width="150" height="8" rx="4"/></g>
-          <rect class="hl h1" x="52" y="56" width="124" height="22" rx="4" fill="none" stroke="#FF3D7F" stroke-width="3"/>
-          <rect class="hl h2" x="52" y="132" width="162" height="36" rx="4" fill="none" stroke="#9B6BFF" stroke-width="3"/>
-          <rect class="hl h3" x="52" y="190" width="162" height="36" rx="4" fill="none" stroke="#4FC3FF" stroke-width="3"/>
-          <rect class="scanline" x="44" y="56" width="182" height="4" fill="#00E0A4"/>
-          <path d="M246 165 L282 165" stroke="#000" stroke-width="4" stroke-linecap="round"/><path d="M272 155 L284 165 L272 175" stroke="#000" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <rect x="300" y="70" width="190" height="190" rx="8" fill="#fff" stroke="#000" stroke-width="3"/>
-          <rect x="300" y="70" width="190" height="34" rx="8" fill="#FFD60A" stroke="#000" stroke-width="3"/>
+          <rect class="hl h1" x="52" y="56" width="124" height="22" rx="4" fill="none" stroke="#B4472F" stroke-width="1.75"/>
+          <rect class="hl h2" x="52" y="132" width="162" height="36" rx="4" fill="none" stroke="#3D6A8A" stroke-width="1.75"/>
+          <rect class="hl h3" x="52" y="190" width="162" height="36" rx="4" fill="none" stroke="#8FB0C8" stroke-width="1.75"/>
+          <rect class="scanline" x="44" y="56" width="182" height="4" fill="#3F7F74"/>
+          <path d="M246 165 L282 165" stroke="#1E2328" stroke-width="4" stroke-linecap="round"/><path d="M272 155 L284 165 L272 175" stroke="#1E2328" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="300" y="70" width="190" height="190" rx="8" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
+          <rect x="300" y="70" width="190" height="34" rx="8" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75"/>
           <text x="314" y="92" class="lbl">Extracted</text>
-          <g class="row r1"><rect x="314" y="118" width="162" height="30" rx="6" fill="#FF3D7F" stroke="#000" stroke-width="2.5"/><text x="324" y="138" class="lbl">Invoice header</text></g>
-          <g class="row r2"><rect x="314" y="158" width="162" height="30" rx="6" fill="#9B6BFF" stroke="#000" stroke-width="2.5"/><text x="324" y="178" class="lbl">Line items</text></g>
-          <g class="row r3"><rect x="314" y="198" width="162" height="30" rx="6" fill="#4FC3FF" stroke="#000" stroke-width="2.5"/><text x="324" y="218" class="lbl">Totals</text></g>
+          <g class="row r1"><rect x="314" y="118" width="162" height="30" rx="6" fill="#B4472F" stroke="#1E2328" stroke-width="1.5"/><text x="324" y="138" class="lbl">Invoice header</text></g>
+          <g class="row r2"><rect x="314" y="158" width="162" height="30" rx="6" fill="#3D6A8A" stroke="#1E2328" stroke-width="1.5"/><text x="324" y="178" class="lbl">Line items</text></g>
+          <g class="row r3"><rect x="314" y="198" width="162" height="30" rx="6" fill="#8FB0C8" stroke="#1E2328" stroke-width="1.5"/><text x="324" y="218" class="lbl">Totals</text></g>
         </svg>
       </div>
     </article>
@@ -537,17 +536,17 @@ footer{padding:30px 0 60px}
   <div class="wrap">
     <h2 class="sec-title">Recognition</h2>
     <div class="agrid">
-      <div class="box award" style="background:var(--yellow)">
+      <div class="box award" >
         <svg class="medal" viewBox="0 0 80 80" aria-hidden="true">
-          <circle class="spinr" cx="40" cy="40" r="34" fill="#FF9F1C" stroke="#000" stroke-width="3" stroke-dasharray="8 6"/>
-          <circle cx="40" cy="40" r="24" fill="#fff" stroke="#000" stroke-width="3"/>
-          <path d="M40 26l4 9 9 .8-7 6 2 9-8-4.6-8 4.6 2-9-7-6 9-.8z" fill="#FFD60A" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+          <circle class="spinr" cx="40" cy="40" r="34" fill="#E0A21B" stroke="#1E2328" stroke-width="1.75" stroke-dasharray="8 6"/>
+          <circle cx="40" cy="40" r="24" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
+          <path d="M40 26l4 9 9 .8-7 6 2 9-8-4.6-8 4.6 2-9-7-6 9-.8z" fill="#E0A21B" stroke="#1E2328" stroke-width="2" stroke-linejoin="round"/>
         </svg>
         <div><h3>Top Gun Award</h3><p>Highest performer of the year at KoiReader, Feb 2026.</p></div>
       </div>
-      <div class="box award" style="background:var(--purple)">
+      <div class="box award" >
         <svg class="medal" viewBox="0 0 80 80" aria-hidden="true">
-          <circle cx="40" cy="40" r="34" fill="#fff" stroke="#000" stroke-width="3"/>
+          <circle cx="40" cy="40" r="34" fill="#fff" stroke="#1E2328" stroke-width="1.75"/>
           <text x="40" y="52" text-anchor="middle" style="font:800 34px var(--display)">3×</text>
         </svg>
         <div><h3>Impact Award</h3><p>Three in a row: Aug 2023, Jan 2024 and Aug 2024.</p></div>
