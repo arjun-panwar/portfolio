@@ -104,8 +104,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .tk-b{font-family:"DM Sans",var(--body);font-weight:500;font-size:14px}
 @media (max-width:640px){.takeaways{grid-template-columns:1fr}.tk{flex-direction:column}}
 @media (max-width:640px){
-  .prose .vis{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  .prose .vis svg{min-width:600px}
+  .prose .vis{overflow:hidden}
+  .prose .vis svg{min-width:0;width:100%;max-width:100%;height:auto}
   .tk{padding:14px}
   .tk svg{width:28px;height:28px}
 }
