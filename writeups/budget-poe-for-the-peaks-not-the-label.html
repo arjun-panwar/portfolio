@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Budget PoE for the peaks, not the label | Arjun Panwar</title>
+<meta name="description" content="The power budget worked out perfectly on paper. We added up the rated draw of every camera and illuminator, and the total sat comfortably under what the switch could…">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Bricolage+Grotesque:wght@700;800&family=DM+Sans:wght@500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --ink:#1E2328; --soft:#5B6470; --line:#C9CED4;
+  --paper:#FFFFFF; --panel:#F4F5F7; --ground:#E9ECEF;
+  --amber:#E0A21B; --steel:#3D6A8A;
+  --title:#1E2328; --sub:#5B6470;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Helvetica,sans-serif;
+  --mono:"IBM Plex Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ground:#14181C; --title:#F1F3F5; --sub:#AEB6BF; color-scheme:dark; } }
+:root[data-theme="dark"]{ --ground:#14181C; --title:#F1F3F5; --sub:#AEB6BF; color-scheme:dark; }
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.box{background:var(--paper);border:1.5px solid var(--ink);border-radius:8px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08}
+img,svg{max-width:100%}
+
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ink);color:#F1F3F5;border-bottom:3px solid var(--amber)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ink)}
+.topin{display:flex;justify-content:space-between;align-items:center;min-height:58px;gap:12px}
+.who{font-family:var(--display);font-weight:700;font-size:19px;text-decoration:none}
+.back{font-weight:500;font-size:15px;text-decoration:none;color:#C9CED4;padding:8px 12px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center}
+.back:hover{background:var(--amber);color:var(--ink)}
+
+/* index */
+.intro{background:var(--ink);color:#F1F3F5;border-color:var(--ink);padding:clamp(28px,5vw,56px);margin:32px 0 10px}
+.intro h1{font-size:clamp(46px,8vw,96px);letter-spacing:-0.03em;color:#fff}
+.intro p{max-width:58ch;color:#C9CED4;margin:14px 0 24px;font-size:19px}
+.jump2{display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid #3A424B;padding-top:18px}
+.jump2 a{text-decoration:none;font-weight:500;font-size:15px;color:#C9CED4;padding:8px 12px;border-radius:4px;min-height:44px;display:inline-flex;align-items:center}
+.jump2 a:hover{background:var(--amber);color:var(--ink)}
+.wsec{padding:26px 0 8px}
+.wsec h2{font-size:clamp(26px,3.4vw,36px);font-weight:700;letter-spacing:-0.015em;margin-bottom:16px;color:var(--title)}
+
+/* article */
+.art{max-width:820px}
+.art-head{padding:40px 0 22px}
+.grp{font-weight:600;font-size:15px;color:var(--steel);text-decoration:none}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .grp, :root:not([data-theme="light"]) .wsec .wgrp{color:#8FB0C8} }
+:root[data-theme="dark"] .grp{color:#8FB0C8}
+.grp:hover{text-decoration:underline}
+.art-head h1{font-size:clamp(36px,6vw,62px);letter-spacing:-0.025em;margin:10px 0 10px;color:var(--title);max-width:18ch}
+.meta{margin:0;color:var(--sub);font-weight:500;font-size:15px}
+.art-fig{margin:0 0 28px;overflow:hidden;max-width:640px}
+.prose{background:var(--paper);border:1.5px solid var(--ink);border-radius:8px;padding:clamp(24px,5vw,52px)}
+.prose p{margin:0 0 1.05em;max-width:66ch}
+.prose ul{margin:0 0 1.2em;padding-left:22px;max-width:64ch}
+.prose li{margin-bottom:.55em}
+.prose li::marker{color:var(--amber)}
+.prose p:last-child{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.3;margin:1.4em 0 0;padding-top:20px;border-top:1.5px solid var(--ink)}
+.prose code{font-family:var(--mono);font-size:.86em;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 6px}
+.prose pre{background:var(--ink);color:#F1F3F5;border-radius:6px;padding:16px 18px;overflow-x:auto;margin:0 0 1.2em;font-size:15px;line-height:1.5}
+.prose pre code{background:none;border:0;padding:0;color:inherit;font-size:inherit}
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0 10px}
+.pn a{display:flex;flex-direction:column;gap:4px;background:var(--paper);border:1.5px solid var(--ink);border-radius:8px;padding:16px 18px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.25}
+.pn a span{font-family:var(--body);font-weight:500;font-size:14px;color:var(--soft)}
+.pn .next{text-align:right}
+.pn a:hover{border-color:var(--amber);box-shadow:4px 4px 0 var(--amber)}
+@media (max-width:600px){.pn{grid-template-columns:1fr}.pn .next{text-align:left}}
+.foot-s{display:flex;gap:10px;flex-wrap:wrap;padding-top:24px;padding-bottom:60px}
+.art + .foot-s{max-width:820px}
+.foot-s a{background:var(--amber);color:var(--ink);border-radius:4px;padding:10px 18px;font-weight:600;text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+/* writeup cards and diagram frames */
+.frame{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#14052B}
+.frame .board{position:absolute;left:0;top:0;width:1080px;height:1080px;transform-origin:0 0;transform:scale(.3)}
+.frame .board > div{font-family:"DM Sans",system-ui,sans-serif}
+.wgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.wcard{display:flex;flex-direction:column;overflow:hidden;text-decoration:none;color:var(--ink)}
+.wcard .frame{border-bottom:1.5px solid var(--ink)}
+.wtext{padding:18px 20px 22px;display:flex;flex-direction:column;gap:6px}
+.wgrp{font-weight:600;font-size:14px;color:var(--steel)}
+.wtext h3{font-family:var(--display);font-size:22px;font-weight:700;letter-spacing:-0.01em;line-height:1.15}
+.wtext p{margin:0;color:var(--soft);font-size:15px;line-height:1.5}
+.wcard:hover h3,.wcard:focus-visible h3{text-decoration:underline;text-decoration-color:var(--amber);text-decoration-thickness:3px;text-underline-offset:4px}
+@media (max-width:960px){.wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.wgrid{grid-template-columns:1fr}}
+
+/* in-article diagram pieces */
+.prose .vis{margin:1.6em calc(-1 * clamp(10px,2.4vw,26px));padding:clamp(10px,2.4vw,22px);border:1.5px solid var(--ink);border-radius:10px}
+.prose .vis svg{display:block;width:100%;height:auto}
+.takeaways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:1.4em 0 1.8em}
+.tk{color:#111;border:2.5px solid #111;border-radius:16px;box-shadow:5px 5px 0 var(--sh);padding:16px 16px 18px;display:flex;flex-direction:column;gap:3px;line-height:1.3}
+.tk svg{width:34px;height:34px;margin-bottom:6px}
+.tk strong{font-family:"Bricolage Grotesque",var(--display);font-weight:800;font-size:21px;line-height:1.15}
+.tk-a{font-family:"DM Sans",var(--body);font-weight:700;font-size:16px}
+.tk-b{font-family:"DM Sans",var(--body);font-weight:500;font-size:14px}
+@media (max-width:640px){.takeaways{grid-template-columns:1fr}.tk{flex-direction:column}}
+@media (max-width:640px){
+  .prose .vis{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .prose .vis svg{min-width:600px}
+  .tk{padding:14px}
+  .tk svg{width:28px;height:28px}
+}
+
+/* compact headers */
+.intro{padding:clamp(20px,3.5vw,40px);margin:24px 0 6px}
+.intro h1{font-size:clamp(34px,5.5vw,60px)}
+.intro p{font-size:clamp(16px,1.6vw,18px);margin:10px 0 18px;line-height:1.55}
+.jump2{flex-wrap:wrap;gap:8px;padding-top:14px}
+.jump2 a{flex:none;border:1px solid #4A535D;white-space:nowrap;padding:7px 12px;min-height:40px}
+.top .topin{min-height:52px}
+@media (max-width:640px){
+  body{font-size:17px}
+  .wrap{padding:0 14px}
+  .intro{margin:14px 0 4px;border-radius:6px}
+  .intro p{font-size:15px}
+  .wsec{padding:18px 0 4px}
+  .wsec h2{font-size:24px;margin-bottom:12px}
+  .who{font-size:17px}
+  .back{font-size:14px;padding:6px 8px}
+  .art-head{padding:22px 0 16px}
+  .art-head h1{font-size:30px;margin:6px 0}
+  .prose{padding:20px 18px}
+  .prose .vis{margin:1.4em -8px;padding:10px}
+}
+/* section menu */
+.jumpd > summary{display:none}
+@media (max-width:640px){
+  .jumpd{margin-top:16px;border-top:1px solid #3A424B;padding-top:14px}
+  .jumpd > summary{display:flex;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;min-height:46px;padding:0 14px;border:1px solid #6B7480;border-radius:6px;font-weight:600;font-size:15px;color:#F1F3F5;background:#2A3037;-webkit-tap-highlight-color:transparent}
+  .jumpd > summary::-webkit-details-marker{display:none}
+  .jumpd > summary::after{content:"";width:9px;height:9px;border-right:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+  .jumpd[open] > summary::after{transform:rotate(-135deg) translateY(-2px)}
+  .jumpd[open] > summary{border-color:var(--amber)}
+  .jumpd nav.jump, .jumpd .jump2{display:grid !important;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0 0 !important;padding:0 !important;border:0 !important;overflow:visible !important}
+  .jumpd nav.jump a, .jumpd .jump2 a{white-space:normal !important;min-height:44px;padding:8px 10px;font-size:14px;line-height:1.25;border:1px solid #4A535D;border-radius:4px;color:#E3E7EA}
+  .jumpd nav.jump a:active, .jumpd .jump2 a:active{background:var(--amber);color:var(--ink)}
+}
+@media (prefers-reduced-motion: reduce){.jumpd > summary::after{transition:none}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap topin">
+  <a class="who" href="../index.html">Arjun Panwar</a>
+  <a class="back" href="index.html">All writeups</a>
+</div></header>
+<main class="wrap art">
+  <div class="art-head">
+    <a class="grp" href="index.html#networking">Networking</a>
+    <h1>Budget PoE for the peaks, not the label</h1>
+    <p class="meta">1 min read</p>
+  </div>
+  <article class="prose">
+<p>The power budget worked out perfectly on paper. We added up the rated draw of every camera and illuminator, and the total sat comfortably under what the switch could deliver.</p>
+<p>Then, on the first cold morning after a power cut, half the cameras kept rebooting in a loop.</p>
+<p>Power over Ethernet ratings on datasheets usually describe normal operation. Real devices don’t stay normal. At startup, cameras draw extra power while they boot. Outdoor units switch on built in heaters when it’s cold. Infrared illuminators turn on together at dusk. And after a power cut, everything does all of this at the same moment.</p>
+<p>When the total demand exceeds the switch budget, the switch protects itself by cutting power to some ports. Those cameras restart, draw peak power again, and the cycle repeats. In the logs, it looks like flaky cameras or a network problem.</p>
+<figure class="vis" style="background:#FFD60A" role="img" aria-label="Budget PoE for the peaks, not the label diagram"><svg viewBox="0 0 952 340" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+<rect x="0" y="0" width="952" height="336" rx="32" fill="#14052B"></rect>
+<rect x="140" y="200" width="160" height="80" fill="#4FC3FF" stroke="#111111" stroke-width="3"></rect><rect x="140" y="150" width="160" height="50" fill="#FFD60A" stroke="#111111" stroke-width="3"></rect>
+<rect x="380" y="170" width="160" height="110" fill="#4FC3FF" stroke="#111111" stroke-width="3"></rect><rect x="380" y="100" width="160" height="70" fill="#FFD60A" stroke="#111111" stroke-width="3"></rect><rect x="380" y="50" width="160" height="50" fill="#FF9F1C" stroke="#111111" stroke-width="3"></rect>
+<line x1="90" y1="280" x2="590" y2="280" stroke="#ffffff" stroke-width="2" opacity="0.5"></line>
+<line x1="90" y1="120" x2="590" y2="120" stroke="#FF3D7F" stroke-width="4" stroke-dasharray="12 8" stroke-linecap="round"></line>
+<text x="90" y="106" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="#FF3D7F">Switch power budget</text>
+<text x="220" y="308" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="#ffffff">On the label</text>
+<text x="460" y="308" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="18" fill="#ffffff">Cold start, all at once</text>
+<rect x="640" y="62" width="22" height="22" rx="5" fill="#4FC3FF" stroke="#111111" stroke-width="2"></rect><text x="674" y="80" font-family="DM Sans, sans-serif" font-weight="700" font-size="19" fill="#ffffff">Cameras</text><rect x="640" y="102" width="22" height="22" rx="5" fill="#FFD60A" stroke="#111111" stroke-width="2"></rect><text x="674" y="120" font-family="DM Sans, sans-serif" font-weight="700" font-size="19" fill="#ffffff">IR illuminators</text><rect x="640" y="142" width="22" height="22" rx="5" fill="#FF9F1C" stroke="#111111" stroke-width="2"></rect><text x="674" y="160" font-family="DM Sans, sans-serif" font-weight="700" font-size="19" fill="#ffffff">Heaters</text>
+<rect x="640" y="206" width="272" height="46" rx="23" fill="#FF3D7F" stroke="#111111" stroke-width="3"></rect>
+<text x="776" y="236" text-anchor="middle" font-family="DM Sans, sans-serif" font-weight="700" font-size="19" fill="#111111">Over budget: ports drop</text>
+</svg></figure>
+<p>How I plan PoE power now:</p>
+<ul><li>Budget for peak draw: startup, heaters on, illuminators on, all at once, in the coldest conditions you will face</li><li>Leave real headroom on top of that, because devices get added long after the original plan</li><li>Stagger power up after an outage, so every device doesn’t hit its peak in the same second</li><li>Set port priorities, so if the budget is exceeded, the least important devices lose power first</li><li>Monitor per port power draw, so you see the margin shrinking before a winter morning shows you</li></ul>
+<div class="takeaways"><div class="tk" style="background:#FF3D7F;--sh:#14052B"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40 L 18 28 L 26 32 L 42 8" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Peaks</strong><span class="tk-a">Startup and cold</span><span class="tk-b">Heaters and IR on</span></div><div class="tk" style="background:#FF9F1C;--sh:#14052B"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="10" width="32" height="30" rx="4" fill="none" stroke="#111111" stroke-width="4"></rect><line x1="8" y1="20" x2="40" y2="20" stroke="#111111" stroke-width="4" stroke-dasharray="4 4"></line></svg><strong>Headroom</strong><span class="tk-a">Size for worst case</span><span class="tk-b">Not the nominal draw</span></div><div class="tk" style="background:#00E0A4;--sh:#14052B"><svg width="48" height="48" viewBox="0 0 48 48" aria-hidden="true"><path d="M6 40 L 6 32 L 16 32 L 16 24 L 26 24 L 26 16 L 36 16 L 36 8 L 42 8" fill="none" stroke="#111111" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path></svg><strong>Stagger</strong><span class="tk-a">Power up in stages</span><span class="tk-b">Set port priorities</span></div></div>
+<p>Size for the coldest morning, not the datasheet.</p>
+  </article>
+  <nav class="pn" aria-label="More writeups"><a class="prev" href="the-network-was-fine-the-buffer-wasnt.html"><span>Previous</span>The network was fine. The buffer wasn’t.</a><a class="next" href="why-gps-sometimes-makes-you-wait.html"><span>Next</span>Why GPS sometimes makes you wait</a></nav>
+</main>
+<footer class="wrap foot-s"><a href="../index.html">Back to projects</a><a href="https://www.linkedin.com/in/arjun-panwar/" target="_blank" rel="noopener">LinkedIn</a></footer>
+<script>
+(function(){
+  var mq=window.matchMedia("(max-width:640px)");
+  var ds=document.querySelectorAll("details.jumpd");
+  function set(){ds.forEach(function(d){if(mq.matches)d.removeAttribute("open");else d.setAttribute("open","");});}
+  set(); if(mq.addEventListener)mq.addEventListener("change",set);
+  ds.forEach(function(d){d.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){if(mq.matches)d.removeAttribute("open");});});});
+})();
+</script>
+<script>
+(function(){
+  function fit(f){var b=f.firstElementChild;if(!b)return;b.style.transform='scale('+(f.clientWidth/1080)+')';}
+  var fs=document.querySelectorAll('.frame');
+  fs.forEach(fit);
+  if('ResizeObserver' in window){var ro=new ResizeObserver(function(es){es.forEach(function(e){fit(e.target);});});fs.forEach(function(f){ro.observe(f);});}
+  else window.addEventListener('resize',function(){fs.forEach(fit);});
+})();
+</script>
+</body>
+</html>
